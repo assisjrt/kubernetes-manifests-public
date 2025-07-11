@@ -87,7 +87,7 @@ spec:
         #   type: RuntimeDefault
       containers:
         - name: simple-web-uuid
-          image: ghcr.io/assisjrt/simple-web-uuid:fdb48d9b82b24725ac10c909702eaa23d39ebf68
+          image: ghcr.io/assisjrt/simple-web-uuid:b43ec2f7b44a7cb1faf5302e1f69c02faf64fece
           imagePullPolicy: Always
           securityContext:
             runAsNonRoot: true
