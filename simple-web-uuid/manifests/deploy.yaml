@@ -71,8 +71,6 @@ spec:
                         - web
                 topologyKey: kubernetes.io/hostname
       restartPolicy: Always
-      imagePullSecrets:
-        - name: ghrc-assisjrt
       automountServiceAccountToken: false
       serviceAccountName: simple-web-uuid
       securityContext:
@@ -83,8 +81,6 @@ spec:
         fsGroupChangePolicy: "OnRootMismatch"
         seccompProfile:
           type: RuntimeDefault
-        # appArmorProfile:
-        #   type: RuntimeDefault
       containers:
         - name: simple-web-uuid
           image: ghcr.io/assisjrt/simple-web-uuid:b43ec2f7b44a7cb1faf5302e1f69c02faf64fece
