@@ -42,7 +42,7 @@ jobs:
           branch: update-simple-web-uuid-image
           delete-branch: true
           committer: "GitHub Actions Bot <41898282+github-actions[bot]@users.noreply.github.com>"
-          author: "GitHub Actions Bot <41898282+github-actions[bot]@users.noreply.github.com>""
+          author: "GitHub Actions Bot <41898282+github-actions[bot]@users.noreply.github.com>"
           body: |
             Update simple-web-uuid image
             Image name: `${{ github.event.client_payload.image_name }}`
