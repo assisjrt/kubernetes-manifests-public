@@ -40,13 +40,7 @@ jobs:
             Automated PR to update simple-web-uuid image
             Image name: `${{ github.event.client_payload.image_name }}`
 
-      # - name: Auto approve
-      #   if: ${{ steps.create-pull-request.outputs.pull-request-number != '' }}
-      #   run: gh pr merge --merge --admin ${{ steps.create-pull-request.outputs.pull-request-number }}
-      #   env:
-      #     GH_TOKEN: ${{ secrets.TOKEN_PR_KUBERNETES_MANIFESTS_PUBLIC }}
-
-      - name: Auto approve
+      - name: Auto pull request approve
         uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: ${{ secrets.TOKEN_PR_KUBERNETES_MANIFESTS_PUBLIC }}
