@@ -21,6 +21,11 @@ jobs:
         with:
           token: ${{ secrets.TOKEN_PR_KUBERNETES_MANIFESTS_PUBLIC }}
 
+      - name: Configure Git identity
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
       - name: Update image
         run: |
           sed -i \
@@ -36,8 +41,8 @@ jobs:
           commit-message: "update simple-web-uuid image"
           branch: update-simple-web-uuid-image
           delete-branch: true
-          committer: "github-action[bot] <actions@github.com>"
-          author: "github-action[bot] <actions@github.com>"
+          committer: "GitHub Actions Bot <41898282+github-actions[bot]@users.noreply.github.com>"
+          author: "GitHub Actions Bot <41898282+github-actions[bot]@users.noreply.github.com>
           body: |
             Update simple-web-uuid image
             Image name: `${{ github.event.client_payload.image_name }}`
