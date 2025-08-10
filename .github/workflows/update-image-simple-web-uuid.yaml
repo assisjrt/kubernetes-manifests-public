@@ -36,10 +36,10 @@ jobs:
           commit-message: "update simple-web-uuid image"
           branch: update-simple-web-uuid-image
           delete-branch: true
-          commiter: bot-simple-web-uuid
-          author: bot-simple-web-uuid
+          committer: "github-action[bot] <actions@github.com>"
+          author: "github-action[bot] <actions@github.com>"
           body: |
-            Automated PR to update simple-web-uuid image
+            Update simple-web-uuid image
             Image name: `${{ github.event.client_payload.image_name }}`
 
       - name: Auto pull request approve
