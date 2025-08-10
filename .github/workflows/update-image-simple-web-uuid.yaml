@@ -1,0 +1,40 @@
+name: Update image simple-web-uuid
+
+on:
+  repository_dispatch:
+    types: ["update-image-simple-web-uuid"]
+
+env:
+  IMAGE_NAME: ${{ github.event.client_payload.image_name }}
+
+jobs:
+  update-image-simple-web-uuid:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update image
+        run: |
+          sed -i \
+            "s|image:.*|image: ${IMAGE_NAME}|" \
+          ./simple-web-uuid/manifests/simple-web-uuid/manifests/deploy.yaml
+
+      - name: Create pull request
+        id: create-pull-request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          title: "Update simple-web-uuid image to ${{ env.IMAGE_NAME }}"
+          commit-message: "update simple-web-uuid image"
+          branch: update-simple-web-uuid-image
+          delete-branch: true
+          body: |
+            Automated PR to update simple-web-uuid image
+            Image name: `${{ github.event.client_payload.image_name }}`
+
+      - name: Auto approve
+        if: ${{ steps.create-pull-request.outputs.pull-request-number != '' }}
+        run: gh pr merge --merge --admin ${{ steps.create-pull-request.outputs.pull-request-number }}
+        env:
+          GH_TOKEN: ${{ secrets.ADMIN_TOKEN_GITHUB }}
