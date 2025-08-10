@@ -23,7 +23,7 @@ jobs:
         run: |
           sed -i \
             "s|image:.*|image: ${IMAGE_NAME}|" \
-          ./simple-web-uuid/manifests/simple-web-uuid/manifests/deploy.yaml
+          ./simple-web-uuid/manifests/deploy.yaml
 
       - name: Create pull request
         id: create-pull-request
