@@ -4,6 +4,10 @@ on:
   repository_dispatch:
     types: ["update-image-simple-web-uuid"]
 
+permissions:
+  pull-requests: write
+  contents: write
+
 env:
   IMAGE_NAME: ${{ github.event.client_payload.image_name }}
 
