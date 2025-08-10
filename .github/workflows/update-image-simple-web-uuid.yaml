@@ -33,8 +33,8 @@ jobs:
             Automated PR to update simple-web-uuid image
             Image name: `${{ github.event.client_payload.image_name }}`
 
-      - name: Auto approve
-        if: ${{ steps.create-pull-request.outputs.pull-request-number != '' }}
-        run: gh pr merge --merge --admin ${{ steps.create-pull-request.outputs.pull-request-number }}
-        env:
-          GH_TOKEN: ${{ secrets.ADMIN_TOKEN_GITHUB }}
+      # - name: Auto approve
+      #   if: ${{ steps.create-pull-request.outputs.pull-request-number != '' }}
+      #   run: gh pr merge --merge --admin ${{ steps.create-pull-request.outputs.pull-request-number }}
+      #   env:
+      #     GH_TOKEN: ${{ secrets.ADMIN_TOKEN_GITHUB }}
